@@ -1,0 +1,363 @@
+@import "tailwindcss";
+
+/* Local Font Declarations */
+@font-face {
+  font-family: 'BakbakOne';
+  src: url('/fonts/BakbakOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'YatraOne';
+  src: url('/fonts/YatraOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-bakbak-one: var(--font-bakbak-one);
+  --font-yatra-one: var(--font-yatra-one);
+}
+
+body {
+  background: #ffffff;
+  color: #171717;
+  font-family: var(--font-yatra-one), Arial, Helvetica, sans-serif;
+}
+
+/* Utility classes for easy font usage */
+.font-bakbak-one {
+  font-family: var(--font-bakbak-one), Arial, Helvetica, sans-serif;
+}
+
+.font-yatra-one {
+  font-family: var(--font-yatra-one), Arial, Helvetica, sans-serif;
+}
+
+/* PDF Viewer Styles */
+.react-pdf__Page {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin: 0 auto;
+}
+
+.react-pdf__Page__canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  border-radius: 8px;
+}
+
+/* Responsive PDF container */
+.pdf-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* High DPI support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .react-pdf__Page__canvas {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* PDF visibility improvements */
+.react-pdf__Page {
+  background: white;
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.react-pdf__Document {
+  background: transparent;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+/* Ensure PDF stays within layout */
+.pdf-viewer-container {
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Remove smooth scrolling to prevent glitching */
+
+/* Force hardware acceleration and prevent glitching */
+* {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+/* Mobile animation performance optimizations */
+@media (max-width: 768px) {
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+  
+  /* Optimize animations for mobile */
+  .animate-fade-in-up,
+  .animate-slide-in-left,
+  .animate-slide-in-right {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform, opacity;
+  }
+}
+
+/* Flipbook Animation Styles */
+@keyframes flipLeft {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(-90deg); }
+  100% { transform: rotateY(0deg); }
+}
+
+@keyframes flipRight {
+  0% { transform: rotateY(0deg); }
+  50% { transform: rotateY(90deg); }
+  100% { transform: rotateY(0deg); }
+}
+
+.flipbook-page {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease-in-out;
+}
+
+.flipbook-page.flipping-left {
+  animation: flipLeft 0.6s ease-in-out;
+}
+
+.flipbook-page.flipping-right {
+  animation: flipRight 0.6s ease-in-out;
+}
+
+/* Page turn shadow effects */
+.page-shadow-left {
+  background: linear-gradient(90deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+  transform-origin: left center;
+  transition: all 0.3s ease-in-out;
+}
+
+.page-shadow-right {
+  background: linear-gradient(270deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+  transform-origin: right center;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Flipbook corner decorations */
+.flipbook-corner {
+  position: absolute;
+  background: radial-gradient(circle, rgba(255,215,0,0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: cornerPulse 2s ease-in-out infinite;
+}
+
+@keyframes cornerPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+/* 3D Transform utilities */
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.-rotate-y-180 {
+  transform: rotateY(-180deg);
+}
+
+.rotate-y-0 {
+  transform: rotateY(0deg);
+}
+
+/* Typing Animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: currentColor; }
+}
+
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(20, end);
+  animation-timing-function: ease-in-out;
+}
+
+.typing-animation-subtitle {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 1.8s steps(18, end) 0.5s;
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
+/* Fade In Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Delay classes for staggered animations */
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+/* XS Screen optimizations (320px - 475px) */
+@media (max-width: 475px) {
+  .animate-fade-in-up,
+  .animate-slide-in-left,
+  .animate-slide-in-right {
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+  
+  /* Optimized XS animations */
+  @keyframes xsFadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate-fade-in-up {
+    animation: xsFadeIn 0.5s ease-out forwards;
+  }
+  
+  /* Enhanced hover effects for touch devices */
+  .hover\:scale-105:active {
+    transform: scale(1.05);
+  }
+  
+  .hover\:scale-110:active {
+    transform: scale(1.1);
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  .animate-fade-in-up,
+  .animate-slide-in-left,
+  .animate-slide-in-right {
+    animation-duration: 0.6s;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+  
+  /* Simplified mobile animations */
+  @keyframes mobileFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .animate-fade-in-up {
+    animation: mobileFadeIn 0.6s ease-out forwards;
+  }
+  
+  /* Enhanced touch interactions */
+  .transition-all:active {
+    transform: scale(0.98);
+  }
+  
+  /* Reduce motion for better mobile performance */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up,
+    .animate-slide-in-left,
+    .animate-slide-in-right,
+    .typing-animation,
+    .typing-animation-subtitle {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
