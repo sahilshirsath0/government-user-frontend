@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 const MONGODB_URI = process.env.MONGODB_URI;
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@yetgaonpanchayat.com';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@panchayat.com';
 
 async function initAdmin() {
   if (!MONGODB_URI) {

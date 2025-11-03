@@ -29,8 +29,8 @@ const yatraOne = localFont({
 });
 
 export const metadata = {
-  title: "Gram Panchayat Yetgaon",
-  description: "Official website for Gram Panchayat Yetgaon",
+  title: "Gram Panchayat",
+  description: "Official website for Gram Panchayat",
 };
 
 export default function RootLayout({ children }) {

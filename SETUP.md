@@ -14,7 +14,7 @@ JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
 # Admin User Credentials (for initial setup)
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=admin123
-ADMIN_EMAIL=admin@yetgaonpanchayat.com
+ADMIN_EMAIL=admin@panchayat.com
 ```
 
 ## Setup Instructions

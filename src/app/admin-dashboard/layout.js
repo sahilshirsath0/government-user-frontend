@@ -42,8 +42,8 @@ function AdminLayoutContent({ children }) {
           <div className="flex items-center space-x-2 md:space-x-4">
             <div className="w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden">
               <img 
-                src="/images/home/yetgaon-logo.png" 
-                alt="Yetgaon Logo" 
+                src="/images/home/-logo.png" 
+                alt="Logo" 
                 className="w-full h-full object-cover"
               />
             </div>

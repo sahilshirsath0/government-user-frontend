@@ -50,7 +50,7 @@ const translations = {
     waterAtmMachine: 'वॉटर ए.टी.एम मशीन',
     
     // Copyright and credits
-    copyrightText: '© 2025 grampanchayatyetgaon.com. सर्व हक्क राखीव. या वेबसाइटवरील सामग्री, प्रतिमा आणि डेटा ग्रामपंचायत येतगावची मालमत्ता आहे आणि लागू कॉपीराइट कायद्यांतर्गत संरक्षित आहे. पूर्व लेखी परवानगीशिवाय कोणत्याही सामग्रीचे अनधिकृत पुनरुत्पादन, वितरण किंवा बदल करणे सक्त प्रतिबंधित आहे.',
+    copyrightText: '© 2025 grampanchayat.com. सर्व हक्क राखीव. या वेबसाइटवरील सामग्री, प्रतिमा आणि डेटा ग्रामपंचायत येतगावची मालमत्ता आहे आणि लागू कॉपीराइट कायद्यांतर्गत संरक्षित आहे. पूर्व लेखी परवानगीशिवाय कोणत्याही सामग्रीचे अनधिकृत पुनरुत्पादन, वितरण किंवा बदल करणे सक्त प्रतिबंधित आहे.',
     designedBy: 'डिझाइन आणि विकसित केले',
     
     
@@ -180,7 +180,7 @@ const translations = {
     announcementNumber: 'सूचना',
 
      // Government Services page specific
-    govServicesBannerAlt: 'Village Maps - Gram Panchayat Yetgaon',
+    govServicesBannerAlt: 'Village Maps - Gram Panchayat',
     imageViewerLoading: 'प्रतिमा व्यूअर लोड होत आहे...',
     govServicesDescription: 'महाराष्ट्र सरकारच्या विविध ऑनलाइन सेवा, प्रमाणपत्रे आणि परवाने यासाठी आवश्यक माहिती आणि लिंक्स.',
     
@@ -314,7 +314,7 @@ const translations = {
     feedback: 'Feedback',
      // Footer specific translations
     footerSlogan: 'Development of Our Village, In Our Hands!',
-    footerDescription: 'A unified platform for services, information and useful resources. Our commitment to a clean, safe and progressive Yetgaon.',
+    footerDescription: 'A unified platform for services, information and useful resources. Our commitment to a clean, safe and progressive.',
     contactTitle: 'Feedback',
     contactSubtitle: 'Send us your feedback.',
     contactFormTitle: 'Feedback',
@@ -491,7 +491,7 @@ const translations = {
 
     
     // Copyright and credits
-    copyrightText: '© 2025 grampanchayatyetgaon.com. All rights reserved. The content, images, and data on this website are the property of Grampanchayat Yetgaon and are protected under applicable copyright laws. Unauthorized reproduction, distribution, or modification of any material without prior written permission is strictly prohibited. Users may access and use the content for personal and non-commercial purposes, provided they do not alter or remove any copyright notices. Any unauthorized use may result in legal action.',
+    copyrightText: '© 2025 grampanchayat.com. All rights reserved. The content, images, and data on this website are the property of Grampanchayat and are protected under applicable copyright laws. Unauthorized reproduction, distribution, or modification of any material without prior written permission is strictly prohibited. Users may access and use the content for personal and non-commercial purposes, provided they do not alter or remove any copyright notices. Any unauthorized use may result in legal action.',
     designedBy: 'Designed and developed by',
 
      // Citizen Services Page
@@ -517,7 +517,7 @@ const translations = {
     additionalServicesDescription: 'Information about other important government schemes and services.',
 
     // Government Services page specific
-    govServicesBannerAlt: 'Village Maps - Gram Panchayat Yetgaon',
+    govServicesBannerAlt: 'Village Maps - Gram Panchayat',
     imageViewerLoading: 'Loading image viewer...',
     govServicesDescription: 'Essential information and links for various online services, certificates and licenses of Maharashtra Government.',
     
