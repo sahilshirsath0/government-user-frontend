@@ -1,6 +1,6 @@
 export default function HeroBanner() {
   return (
-    <section className="relative  h-[27vh] xs:h-[70vh] md:h-[80vh] lg:h-[90vh] xl:h-[95vh] flex items-center justify-center text-center overflow-hidden">
+    <section className="relative  h-[23vh] xs:h-[70vh] md:h-[80vh] lg:h-[90vh] xl:h-[95vh] flex items-center justify-center text-center overflow-hidden">
       {/* Background Video */}
       <video
         autoPlay

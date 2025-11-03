@@ -76,12 +76,12 @@ export default function Header() {
           <div className="flex flex-col md:flex-row   space-y-2 md:space-y-0">
             
             {/* Government Title */}
-            <p className="text-center md:text-left text-sm sm:text-base font-bakbak-one">
+            <p className="text-center  md:text-left text-sm sm:text-base font-bakbak-one">
               {t('governmentTitle')}
             </p>
 
             {/* Logo + Title Section */}
-            <div className="flex md:mx-50 md:justify-end space-x-3 md:space-x-4">
+            <div className="flex   md:mx-50 md:justify-end space-x-3 md:space-x-4">
               
               {/* Hidden on small devices */}
               <div className="w-10 h-10 sm:w-12 sm:h-12 hidden lg:block">
@@ -108,7 +108,7 @@ export default function Header() {
               </div>
 
               {/* Title Section */}
-              <div className="text-center md:text-center">
+              <div className="text-center mx-auto  md:text-center">
                 <h1 className="text-xl sm:text-2xl md:text-3xl font-bold font-yatra-one">
                   {t('panchayatName')}
                 </h1>
