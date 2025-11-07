@@ -4,7 +4,7 @@ import { useTranslation } from '../hooks/useTranslation';
 export default function HeroBanner() {
   const { t, language } = useTranslation();
   return (
-    <>    <section className="relative h-[20vh] xs:h-[70vh] sm:h-[38vh] md:h-[60vh] lg:h-[60vh] xl:h-[84vh] flex items-center justify-center text-center overflow-hidden">
+    <>    <section className="relative h-[20vh] xs:h-[70vh] sm:h-[35vh] md:h-[40vh] lg:h-[60vh] xl:h-[70vh] flex items-center justify-center text-center overflow-hidden">
       {/* Background Video */}
       <video
         autoPlay
