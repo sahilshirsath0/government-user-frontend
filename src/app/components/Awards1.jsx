@@ -55,7 +55,7 @@ export default function AwardsPage() {
       console.log('Members response:', response);
       
       if (response.data.success && response.data.data.length > 0) {
-        setMembers(response.data.data);
+           setMembers([...response.data.data].reverse());
         setMembersError(null);
       } else {
         setMembers([]);
@@ -126,63 +126,50 @@ export default function AwardsPage() {
   }, [isVisible]);
 
   return (
-    <div className="min-h-screen bg-white py-4 sm:py-6 md:py-8 lg:py-12 px-2 sm:px-4 md:px-6">
+    <div className="min-h-screen bg-white py-4 sm:py-6 md:py-8 lg:py-12 px-2 sm:px-4 md:px-6  ">
       <div className="max-w-7xl mx-auto">
         
         {/* Members Section */}
-        <div className="mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-4 md:px-8">
-          {membersLoading ? (
-            <div className="flex justify-center items-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-              <span className="ml-4 text-gray-600 font-yatra-one">{t('membersLoading')}</span>
-            </div>
-          ) : membersError || members.length === 0 ? (
-            <div className="text-center py-12">
-              <div className="text-6xl mb-4">👥</div>
-              <p className="text-lg font-yatra-one text-gray-600">{membersError || t('noMembersAvailable')}</p>
-            </div>
-          ) : (
-            <>
-              {/* Keep your existing members display logic but use translated loading/error messages */}
-              <div className="flex flex-row justify-center items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-12 mb-4 sm:mb-6 lg:mb-0">
-                {/* Your existing members mapping code stays the same */}
-                {members.slice(0, 2).map((member, index) => (
-                  <div key={member.id} className="w-1/2 lg:w-1/3">
-                    {/* Keep all your existing member card JSX */}
-                    <div className="bg-white shadow-lg overflow-hidden relative rounded-lg hover:shadow-xl transition-shadow duration-300">
-                      <div className="h-32 xs:h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72 relative">
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className="w-full h-full object-fit"
-                          onError={(e) => {
-                            e.target.src = '/default_image.png';
-                          }}
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-                        <div className="absolute bottom-0 left-0 right-0 text-white text-center pb-0.5 xs:pb-1 sm:pb-2 md:pb-3 lg:pb-4 xl:pb-6 px-0.5 xs:px-1 sm:px-2 md:px-3 lg:px-4">
-                          <h3 className="text-[8px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base xl:text-lg font-bold mb-0 xs:mb-0.5 sm:mb-1 md:mb-1.5 lg:mb-2 text-white leading-tight">{member.name}</h3>
-                          <div className="flex items-center justify-center my-0.5 xs:my-0.5 sm:my-1 md:my-1.5 lg:my-2 xl:my-3 px-0.5 xs:px-0.5 sm:px-1 md:px-2 lg:px-4">
-                            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-yellow-400 to-yellow-400"></div>
-                            <div className="mx-0.5 xs:mx-0.5 sm:mx-1">
-                              <div className="w-0.5 h-0.5 xs:w-1 xs:h-1 sm:w-1.5 sm:h-1.5 md:w-2 md:h-2 lg:w-2.5 lg:h-2.5 xl:w-3 xl:h-3 bg-yellow-400 transform rotate-45"></div>
-                            </div>
-                            <div className="flex-1 h-px bg-gradient-to-l from-transparent via-yellow-400 to-yellow-400"></div>
-                          </div>
-                          <p className="text-[6px] xs:text-[7px] sm:text-xs md:text-sm lg:text-base xl:text-lg">{member.position}</p>
-                          <p className="text-[6px] xs:text-[7px] sm:text-xs md:text-sm lg:text-base xl:text-lg">{member.email}</p>
-                          <p className="text-[6px] xs:text-[7px] sm:text-xs md:text-sm lg:text-base xl:text-lg">{member.phone}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                
-                {/* Keep all your existing third member logic */}
+        <div className="mb-8 sm:mb-12 md:mb-16 lg:mb-50 px-4 md:px-8">
+  {membersLoading ? (
+    <div className="flex justify-center items-center py-12">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      <span className="ml-4 text-gray-600 font-yatra-one">{t('membersLoading')}</span>
+    </div>
+  ) : membersError || members.length === 0 ? (
+    <div className="text-center py-12">
+      <div className="text-6xl mb-4">👥</div>
+      <p className="text-lg font-yatra-one text-gray-600">{membersError || t('noMembersAvailable')}</p>
+    </div>
+  ) : (
+    <>
+      <div className="flex flex-row  flex-wrap justify-center  gap-2  sm:gap-4 md:gap-6 lg:gap-8 xl:gap-12 mb-4 sm:mb-6 lg:mb-0">
+        {members.slice(0, 4).map((member, index) => (
+          <div key={member.id} className="w-37 h-40 lg:w-60 ">
+            <div className="bg-white  shadow-lg overflow-hidden relative rounded-lg hover:shadow-xl transition-shadow duration-300">
+              <div className="h-40  xs:h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72 relative">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-fit"
+                  onError={(e) => { e.target.src = '/default_image.png'; }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 text-white text-center px-0.5 xs:px-1 sm:px-2 md:px-3 lg:px-4">
+                  <h3 className="text-[10px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base xl:text-lg font-bold mb-0 xs:mb-0.5 sm:mb-1 md:mb-1 text-white leading-tight">{member.name}</h3>
+                  <p className="text-[9px] xs:text-[7px] sm:text-xs md:text-sm lg:text-base xl:text-lg">{member.position}</p>
+                  <p className="text-[9px] xs:text-[7px] sm:text-xs md:text-sm lg:text-base xl:text-lg">{member.email}</p>
+                  <p className="text-[9px] xs:text-[7px] sm:text-xs md:text-sm lg:text-base xl:text-lg">{member.phone}</p>
+                </div>
               </div>
-            </>
-          )}
-        </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  )}
+</div>
+
 
         {/* Awards Section */}
         <div className="mt-4 sm:mt-6 md:mt-8 lg:mt-20">

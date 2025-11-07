@@ -169,7 +169,7 @@ export default function Header() {
                         
                         {/* Dropdown Menu */}
                         {activeDropdown === item.name && (
-                          <div className="absolute top-full left-0 mt-1 w-64 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                          <div className="absolute top-full left-0  w-64 bg-white border border-gray-200 rounded-md shadow-lg z-50">
                             <div className="py-2">
                               {item.submenu.map((subItem) => (
                                 <a

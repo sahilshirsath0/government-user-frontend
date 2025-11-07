@@ -48,8 +48,8 @@ function AdminLayoutContent({ children }) {
               />
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-lg md:text-xl font-yatra-one text-gray-800">ग्रामपंचायत येतगाव</h1>
-              <p className="text-xs md:text-sm text-gray-600 font-bakbak-one">ता. कडेमाव जी. सानली</p>
+              <h1 className="text-lg md:text-xl font-yatra-one text-gray-800">ग्रामपंचायत</h1>
+        
             </div>
           </div>
           <div className="flex items-center space-x-2 md:space-x-4">

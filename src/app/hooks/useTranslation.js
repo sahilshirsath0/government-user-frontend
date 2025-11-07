@@ -37,7 +37,7 @@ const translations = {
     ganeshRegistration: 'गणेश मंडळ नोंदणी',
     povertyLineCertificate: 'दारिद्रय रेषेखाली असलेला दाखला',
  footerSlogan: 'आपल्या गावाचा विकास, आपल्या हातात !',
-    footerDescription: 'सेवा, माहिती आणि उपयुक्त साधनांचे एकत्र व्यासपीठ. स्वच्छ, सुरक्षित आणि प्रगत येतगावसाठी आमची वचनबद्धता.',
+    footerDescription: 'सेवा, माहिती आणि उपयुक्त साधनांचे एकत्र व्यासपीठ. स्वच्छ, सुरक्षित आणि प्रगत गावासाठी आमची वचनबद्धता.',
     
     // Services in footer
     cleanlinessWaterSupply: 'स्वच्छता आणि पाणीपुरवठा',
@@ -50,7 +50,7 @@ const translations = {
     waterAtmMachine: 'वॉटर ए.टी.एम मशीन',
     
     // Copyright and credits
-    copyrightText: '© 2025 grampanchayat.com. सर्व हक्क राखीव. या वेबसाइटवरील सामग्री, प्रतिमा आणि डेटा ग्रामपंचायत येतगावची मालमत्ता आहे आणि लागू कॉपीराइट कायद्यांतर्गत संरक्षित आहे. पूर्व लेखी परवानगीशिवाय कोणत्याही सामग्रीचे अनधिकृत पुनरुत्पादन, वितरण किंवा बदल करणे सक्त प्रतिबंधित आहे.',
+    copyrightText: '© 2025 grampanchayat.com. सर्व हक्क राखीव. या वेबसाइटवरील सामग्री, प्रतिमा आणि डेटा ग्रामपंचायत गावची मालमत्ता आहे आणि लागू कॉपीराइट कायद्यांतर्गत संरक्षित आहे. पूर्व लेखी परवानगीशिवाय कोणत्याही सामग्रीचे अनधिकृत पुनरुत्पादन, वितरण किंवा बदल करणे सक्त प्रतिबंधित आहे.',
     designedBy: 'डिझाइन आणि विकसित केले',
     
     
@@ -70,7 +70,10 @@ const translations = {
     // Success/Error messages
     successMessage: 'प्रतिसाद यशस्वीरित्या सबमिट झाला!',
     errorMessage: 'प्रतिसाद सबमिट करण्यात त्रुटी झाली आहे. कृपया पुन्हा प्रयत्न करा.',
-    
+    welcome_head: 'सहर्ष स्वागत',
+    welcomesubtitle: ' ग्रामपंचायत सावरगाव घाट',
+    welomedescription: '  सुशासन, पारदर्शकता आणि सर्वांगीण विकासाकडे वाटचाल करणारे सावरगाव घाट',
+    welcomegov: 'महाराष्ट्र शासन',
     // Services
     sevenTwelve: '७/१२ उतारा',
     birthCertificate: 'जन्म प्रमाणपत्र विभाग',
@@ -91,6 +94,7 @@ const translations = {
     viewMoreAnnouncements: 'आणखी सूचना पहा',
     // Government services section
     governmentServices: 'शासकीय सेवा',
+    nagrikseva:" नागरीक सेवा",
     servicesDescription: 'प्रधानमंत्री आवास योजना, वृद्धापक्य पेन्शन, इतर सामाजिक योजनांसाठी मार्गदर्शन व सहाय्य मिळवा.',
      contactTitle: 'प्रतिसाद',
     contactSubtitle: 'आपला प्रतिसाद आम्हाला पाठवा.',
@@ -108,6 +112,7 @@ const translations = {
     enterEmail: 'आपला ईमेल येथे लिहा',
     enterSubject: 'आपला विषय प्रविष्ट करा',
     enterMessage: 'आपला संदेश येथे लिहा (व्हाट्सअप नंबर समाविष्ट करा)',
+    
     
     // Validation errors
     nameRequired: 'नाव आवश्यक आहे',
@@ -277,7 +282,7 @@ const translations = {
     addressText: 'ग्रामपंचायत सावरगाव घाट, तालुका - पाटोदा,\nजिल्हा - बीड, महाराष्ट्र 413207',
 
      // Citizen Services Page
-    citizenServicesTitle: 'नागरिक सेवा',
+    citizenServicesTitle: 'विभाग',
     citizenServicesSubtitle: 'सर्व सरकारी सेवा एका ठिकाणी. सहज, जलद आणि विश्वसनीय.',
     searchServices: 'सेवा शोधा...',
     searchResults: 'शोध परिणाम',
@@ -343,7 +348,11 @@ const translations = {
     awardYear: 'Award',
 // Announcements page specific
     
-
+ nagrikseva:" Citizen Services",
+welcome_head: 'Welcome',
+welcomesubtitle: 'Grampanchayat Savargaon Ghat',
+welomedescription: 'Savargaon Ghat — moving towards good governance, transparency, and holistic development',
+welcomegov: 'Government of Maharashtra',
 
     
     // Loading and empty states
@@ -495,7 +504,7 @@ const translations = {
     designedBy: 'Designed and developed by',
 
      // Citizen Services Page
-    citizenServicesTitle: 'Citizen Services',
+    citizenServicesTitle: 'Division',
     citizenServicesSubtitle: 'All government services in one place. Easy, fast and reliable.',
     searchServices: 'Search services...',
     searchResults: 'Search Results for',

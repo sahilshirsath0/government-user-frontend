@@ -18,8 +18,6 @@ const NagrikSevaApplication = () => {
     aadhaarNumber: '',
     email: '',
     certificateHolderName: '',
-    dateOfBirth: '',
-    dateOfRegistration: '',
     paymentScreenshot: null
   });
 
@@ -92,8 +90,7 @@ const NagrikSevaApplication = () => {
     if (!formData.aadhaarNumber.trim()) errors.aadhaarNumber = 'आधार नंबर आवश्यक आहे';
     if (!formData.email.trim()) errors.email = 'ईमेल आवश्यक आहे';
     if (!formData.certificateHolderName.trim()) errors.certificateHolderName = 'प्रमाणपत्र धारकाचे नाव आवश्यक आहे';
-    if (!formData.dateOfBirth) errors.dateOfBirth = 'जन्मतारीख आवश्यक आहे';
-    if (!formData.dateOfRegistration) errors.dateOfRegistration = 'नोंदणी तारीख आवश्यक आहे';
+    
 
     // Validate phone number (10 digits)
     if (formData.whatsappNumber && !/^\d{10}$/.test(formData.whatsappNumber)) {
@@ -139,8 +136,7 @@ const NagrikSevaApplication = () => {
           aadhaarNumber: '',
           email: '',
           certificateHolderName: '',
-          dateOfBirth: '',
-          dateOfRegistration: '',
+        
           paymentScreenshot: null
         });
         
@@ -335,42 +331,7 @@ const NagrikSevaApplication = () => {
                   </div>
                 </div>
 
-                {/* Date Information */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="dateOfBirth" className="block text-sm font-yatra-one font-bold text-gray-700 mb-2">
-                      जन्मतारीख <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="date"
-                      id="dateOfBirth"
-                      name="dateOfBirth"
-                      value={formData.dateOfBirth}
-                      onChange={handleInputChange}
-                      className={`w-full px-3 py-2 border rounded-lg font-bakbak-one focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                        formErrors.dateOfBirth ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                    />
-                    {formErrors.dateOfBirth && <p className="text-red-500 text-xs mt-1 font-bakbak-one">{formErrors.dateOfBirth}</p>}
-                  </div>
-
-                  <div>
-                    <label htmlFor="dateOfRegistration" className="block text-sm font-yatra-one font-bold text-gray-700 mb-2">
-                      नोंदणी तारीख <span className="text-red-500">*</span>
-                    </label>
-                    <input
-                      type="date"
-                      id="dateOfRegistration"
-                      name="dateOfRegistration"
-                      value={formData.dateOfRegistration}
-                      onChange={handleInputChange}
-                      className={`w-full px-3 py-2 border rounded-lg font-bakbak-one focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                        formErrors.dateOfRegistration ? 'border-red-500' : 'border-gray-300'
-                      }`}
-                    />
-                    {formErrors.dateOfRegistration && <p className="text-red-500 text-xs mt-1 font-bakbak-one">{formErrors.dateOfRegistration}</p>}
-                  </div>
-                </div>
+              
 
                 {/* Payment Screenshot */}
                 <div>

@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import NagrikSevaApplication from '../../division/page';
+
 
 export default function SatBarahUtaraPage() {
   return (
@@ -72,8 +72,7 @@ export default function SatBarahUtaraPage() {
         </div>
       </section>
 
-      {/* Import Division Form Component */}
-      <NagrikSevaApplication />
+     
     </div>
   );
 }

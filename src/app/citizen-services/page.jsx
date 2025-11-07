@@ -3,6 +3,7 @@
 import { FileText, HeartPulse, BadgeCheck, ClipboardList, Home, Droplets, Hammer, Users2, Receipt, CheckCircle, ShieldAlert, FileSearch, Tv, Train, Bus, Plane, Smartphone, Lightbulb, Shield, Link2, Globe, Users, ClipboardCheck, UserRound, FilePenLine, CalendarDays, Clock, ShieldCheck, CloudDownload, IdCard, History, CreditCard, RefreshCw, Clock3, NotebookPen, UserPlus, CarFront, Factory, Building2, Rocket, Sprout, CloudLightning, FileSpreadsheet, FileCheck2, Truck, IndianRupee, ShoppingCart, Briefcase, SquareParking, AlertTriangle, GraduationCap, Search, X } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from '../hooks/useTranslation';
+import Image from "next/image";
 
 export default function CitizenServicesPage() {
   const { t, language } = useTranslation();
@@ -44,7 +45,7 @@ export default function CitizenServicesPage() {
       desc: "७/१२ उतारा म्हणजे जमिनीच्या मालकीचा अधिकृत दस्तऐवज जो भूमी अभिलेख विभागाकडून मिळतो.",
       descEn: "7/12 Extract is an important government document that shows the official record of land ownership.",
       icon: FileSearch,
-      href: "/citizen-services/7-12-utara",
+      href: "https://share.google/B2Hpd7o3zaXx8qU4S",
       category: "panchayat"
     },
     {
@@ -53,7 +54,7 @@ export default function CitizenServicesPage() {
       desc: "नमुना ८ उतारा म्हणजे मालमत्तेचा चौकशीविना नोंदीतील मालमत्तेसंबंधी अधिकारांची माहिती दस्तऐवज.",
       descEn: "Form 8 Extract is an important government document that shows the official record of house ownership.",
       icon: Home,
-      href: "/citizen-services/namuna-8-utara",
+      href: "https://share.google/B2Hpd7o3zaXx8qU4S",
       category: "panchayat"
     },
     {
@@ -240,22 +241,29 @@ export default function CitizenServicesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 text-white">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative container mx-auto px-4 py-16 md:py-24">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-yatra-one font-bold mb-6 leading-tight">
-              {t('citizenServicesTitle')}
-            </h1>
-            <p className="text-lg md:text-xl text-blue-100 font-bakbak-one mb-8 leading-relaxed">
-              {t('citizenServicesSubtitle')}
-            </p>
+      <section className="relative h-[60vh] md:h-[70vh] lg:h-[80vh] flex items-center justify-center text-center overflow-hidden">
+                    {/* Background Image */}
+                    <Image
+                      src="/images/vecteezy_irrigation-canal-with-flowing-water-in-rural-landscape_70867349.png"
+                      alt={t('govServicesBannerAlt')}
+                      fill
+                      className="object-cover object-center z-0"
+                      priority
+                    />
             
-            {/* Search Bar */}
-            
-          </div>
-        </div>
-      </section>
+                    {/* Overlay Content */}
+                    <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4 z-10">
+                      {/* Main Title */}
+                      <h1 className="text-yellow-400 text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-yatra-one font-bold mb-2 leading-tight typing-animation">
+                        {t('citizenServicesTitle')}
+                      </h1>
+                      
+                      {/* Subtitle */}
+                      <h2 className="text-white text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bakbak-one font-bold mb-6 leading-tight typing-animation-subtitle">
+                        {t('citizenServicesSubtitle')}
+                      </h2>
+                    </div>
+                  </section>
 
       {/* Services Section */}
       <section className="py-16">
@@ -288,6 +296,7 @@ export default function CitizenServicesPage() {
             </div>
           ) : (
             <>
+            
               {/* Panchayat Office Services */}
               <div className="mb-16">
                 <div className="text-center mb-12">
@@ -307,9 +316,35 @@ export default function CitizenServicesPage() {
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 w-full max-w-full">
-                  {allServices.filter(s => s.category === 'panchayat').map((service, index) => renderServiceCard(service, index))}
+                  {/*ustod kamgar license */}
+            <a href="https://share.google/2Aqrm7focfNeM4Lwq" target="_blank" rel="noopener noreferrer" className="group relative rounded-xl bg-white  p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 border-blue-400">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <span className="inline-flex items-center justify-center w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-slate-50 text-slate-800 ring-1 ring-slate-200 group-hover:bg-blue-50 group-hover:text-blue-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-factory w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" aria-hidden="true">
+                    <path d="M12 16h.01"></path>
+                    <path d="M16 16h.01"></path>
+                    <path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path>
+                    <path d="M8 16h.01"></path>
+                  </svg>
+                </span>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-yatra-one text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-slate-900 leading-tight">
+                    <span className="relative inline-block">
+                      {t('ऊसतोड कामगार नोंदणी')}
+                      <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-blue-200 group-hover:bg-blue-400 transition-colors"></span>
+                    </span>
+                  </h3>
+                  <p className="mt-1 sm:mt-2 text-slate-600 text-xs xs:text-xs sm:text-sm leading-relaxed font-bakbak-one">
+                    {t('ऊसतोड कामगार नोंदणी फॉर्म भरण्याकरीता येथे क्लिक करा')}
+                  </p>
                 </div>
               </div>
+            </a>
+                  {allServices.filter(s => s.category === 'panchayat').map((service, index) => renderServiceCard(service, index))}
+                </div>
+                
+              </div>
+              
 
               {/* Tickets & Recharge Services */}
               <div className="mb-16">

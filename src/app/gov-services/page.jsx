@@ -65,6 +65,31 @@ export default function MapsVillegePage() {
         
         <div className=' md:mx-20 mb-4'>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-full">
+
+            {/*ustod kamgar license */}
+            <a href="https://share.google/2Aqrm7focfNeM4Lwq" target="_blank" rel="noopener noreferrer" className="group relative rounded-xl bg-white border p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 border-blue-400">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <span className="inline-flex items-center justify-center w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-slate-50 text-slate-800 ring-1 ring-slate-200 group-hover:bg-blue-50 group-hover:text-blue-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-factory w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" aria-hidden="true">
+                    <path d="M12 16h.01"></path>
+                    <path d="M16 16h.01"></path>
+                    <path d="M3 19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5a.5.5 0 0 0-.769-.422l-4.462 2.844A.5.5 0 0 1 15 10.5v-2a.5.5 0 0 0-.769-.422L9.77 10.922A.5.5 0 0 1 9 10.5V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path>
+                    <path d="M8 16h.01"></path>
+                  </svg>
+                </span>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-yatra-one text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-slate-900 leading-tight">
+                    <span className="relative inline-block">
+                      {t('ऊसतोड कामगार नोंदणी')}
+                      <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-blue-200 group-hover:bg-blue-400 transition-colors"></span>
+                    </span>
+                  </h3>
+                  <p className="mt-1 sm:mt-2 text-slate-600 text-xs xs:text-xs sm:text-sm leading-relaxed font-bakbak-one">
+                    {t('ऊसतोड कामगार नोंदणी फॉर्म भरण्याकरीता येथे क्लिक करा')}
+                  </p>
+                </div>
+              </div>
+            </a>
             
             {/* Business License */}
             <a href="https://aaplesarkar.mahaonline.gov.in/" target="_blank" rel="noopener noreferrer" className="group relative rounded-xl bg-white border p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 border-blue-400">

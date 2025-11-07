@@ -3,12 +3,38 @@
 import React from 'react';
 import Link from 'next/link';
 import { useTranslation } from '../hooks/useTranslation';
+import Image from 'next/image';
 
 export default function GovPage() {
   const { t, language } = useTranslation();
   
-  return (
+  return (<div >
+     {/* Hero Banner Section */}
+            <section className="relative h-[60vh] md:h-[70vh] lg:h-[80vh] flex items-center justify-center text-center overflow-hidden">
+              {/* Background Image */}
+              <Image
+                src="/images/vecteezy_irrigation-canal-with-flowing-water-in-rural-landscape_70867349.png"
+                alt={t('govServicesBannerAlt')}
+                fill
+                className="object-cover object-center z-0"
+                priority
+              />
+      
+              {/* Overlay Content */}
+              <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-4 z-10">
+                {/* Main Title */}
+                <h1 className="text-yellow-400 text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-yatra-one font-bold mb-2 leading-tight typing-animation">
+                  {t('nagrikseva')}
+                </h1>
+                
+                {/* Subtitle */}
+                <h2 className="text-white text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bakbak-one font-bold mb-6 leading-tight typing-animation-subtitle">
+                  {t('panchayatName')}
+                </h2>
+              </div>
+            </section>
     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 w-full max-w-full">
+     
       
       {/* Birth Certificate */}
       <Link href="/citizen-services/janma-pramanpatra" className="group relative rounded-2xl bg-white border border-slate-200 p-2 xs:p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500/40">
@@ -83,7 +109,7 @@ export default function GovPage() {
       </Link>
 
       {/* 7/12 Extract */}
-      <Link href="/citizen-services/7-12-utara" className="group relative rounded-2xl bg-white border border-slate-200 p-2 xs:p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500/40">
+      <Link href="https://share.google/B2Hpd7o3zaXx8qU4S" className="group relative rounded-2xl bg-white border border-slate-200 p-2 xs:p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500/40">
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-indigo-500/0 to-emerald-500/0 opacity-0 group-hover:opacity-100 group-hover:via-indigo-500/5 group-hover:to-emerald-500/5 transition-opacity"></div>
         <div className="relative flex items-start gap-3 sm:gap-4">
           <div className="shrink-0">
@@ -108,7 +134,7 @@ export default function GovPage() {
       </Link>
 
       {/* Sample 8 Extract */}
-      <Link href="/citizen-services/namuna-8-utara" className="group relative rounded-2xl bg-white border border-slate-200 p-2 xs:p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500/40">
+      <Link href="https://share.google/B2Hpd7o3zaXx8qU4S" className="group relative rounded-2xl bg-white border border-slate-200 p-2 xs:p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-blue-500/40">
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-indigo-500/0 to-emerald-500/0 opacity-0 group-hover:opacity-100 group-hover:via-indigo-500/5 group-hover:to-emerald-500/5 transition-opacity"></div>
         <div className="relative flex items-start gap-3 sm:gap-4">
           <div className="shrink-0">
@@ -274,6 +300,7 @@ export default function GovPage() {
         </div>
       </Link>
 
+    </div>
     </div>
   );
 }

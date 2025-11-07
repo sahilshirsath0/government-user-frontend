@@ -50,7 +50,7 @@ const AdministrativeCommitteePage = () => {
       console.log('Members response:', response);
       
       if (response.data.success && response.data.data.length > 0) {
-        setMembers(response.data.data);
+        setMembers([...response.data.data].reverse());
         setMembersError(null);
       } else {
         setMembers([]);
