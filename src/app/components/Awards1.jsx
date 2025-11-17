@@ -126,11 +126,11 @@ export default function AwardsPage() {
   }, [isVisible]);
 
   return (
-    <div className="min-h-screen bg-white py-4 sm:py-6 md:py-8 lg:py-12 px-2 sm:px-4 md:px-6  ">
+    <div className="min-h-screen bg-white py-4 sm:py-6 md:py-8 lg:py-12 px-2 sm:px-4 md:px-6 ">
       <div className="max-w-7xl mx-auto">
         
         {/* Members Section */}
-        <div className="mb-8 sm:mb-12 md:mb-16 lg:mb-50 px-4 md:px-8">
+        <div className="mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-4 md:px-8 ">
   {membersLoading ? (
     <div className="flex justify-center items-center py-12">
       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -143,29 +143,34 @@ export default function AwardsPage() {
     </div>
   ) : (
     <>
-      <div className="flex flex-row  flex-wrap justify-center  gap-2  sm:gap-4 md:gap-6 lg:gap-8 xl:gap-12 mb-4 sm:mb-6 lg:mb-0">
-        {members.slice(0, 4).map((member, index) => (
-          <div key={member.id} className="w-37 h-40 lg:w-60 ">
-            <div className="bg-white  shadow-lg overflow-hidden relative rounded-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="h-40  xs:h-40 sm:h-48 md:h-56 lg:h-64 xl:h-72 relative">
-                <img
-                  src={member.image}
-                  alt={member.name}
-                  className="w-full h-full object-fit"
-                  onError={(e) => { e.target.src = '/default_image.png'; }}
-                />
-                <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 text-white text-center px-0.5 xs:px-1 sm:px-2 md:px-3 lg:px-4">
-                  <h3 className="text-[10px] xs:text-[9px] sm:text-xs md:text-sm lg:text-base xl:text-lg font-bold mb-0 xs:mb-0.5 sm:mb-1 md:mb-1 text-white leading-tight">{member.name}</h3>
-                  <p className="text-[9px] xs:text-[7px] sm:text-xs md:text-sm lg:text-base xl:text-lg">{member.position}</p>
-                  <p className="text-[9px] xs:text-[7px] sm:text-xs md:text-sm lg:text-base xl:text-lg">{member.email}</p>
-                  <p className="text-[9px] xs:text-[7px] sm:text-xs md:text-sm lg:text-base xl:text-lg">{member.phone}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div className="flex flex-row flex-wrap justify-center gap-4 mb-4 sm:mb-6 lg:mb-0">
+  {members.slice(0, 4).map((member) => (
+    <li
+      key={member.id}
+      className="features-style2__single text-center mt-3 flex-shrink-0 bg-white rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105 w-37 sm:w-40 md:w-48 lg:w-48 xl:w-48"
+      style={{ listStyle: 'none' }}
+    >
+      <div className="features-style2__single-icon mx-auto mb-3">
+        <img
+          src={member.image}
+          alt={member.name}
+          loading="lazy"
+          width="115"
+          height="115"
+          className="mx-auto rounded-full border-4 border-gray-300 shadow-md object-cover"
+          onError={(e) => { e.target.src = '/default_image.png'; }}
+        />
       </div>
+      <div className="features-style2__single-content text-black px-2">
+        <h3 className="text-lg font-semibold tracking-wide mb-1 hover:text-blue-600 transition-colors duration-300">
+          <a href="#">{member.name}</a>
+        </h3>
+        <p className="text-sm font-medium">{member.position}</p>
+      </div>
+    </li>
+  ))}
+</div>
+
     </>
   )}
 </div>

@@ -206,7 +206,7 @@ const AdministrativeCommitteePage = () => {
                   )}
                   
                   {/* Member Details */}
-                  <div className="p-6">
+                  <div className="p-6 ">
                     <h3 className="text-xl font-yatra-one font-bold text-gray-800 mb-2">
                       {member.name}
                     </h3>
