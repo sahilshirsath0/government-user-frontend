@@ -18,6 +18,7 @@ const NagrikSevaApplication = () => {
     aadhaarNumber: "",
     email: "",
     certificateHolderName: "",
+    certificateName:"",
     paymentScreenshot: null,
   });
 
@@ -98,6 +99,8 @@ const NagrikSevaApplication = () => {
     if (!formData.email.trim()) errors.email = "ईमेल आवश्यक आहे";
     if (!formData.certificateHolderName.trim())
       errors.certificateHolderName = "प्रमाणपत्र धारकाचे नाव आवश्यक आहे";
+    if (!formData.certificateName.trim())
+      errors.certificateName = "प्रमाणपत्राचे नाव आवश्यक आहे";
 
     // Validate phone number (10 digits)
     if (formData.whatsappNumber && !/^\d{10}$/.test(formData.whatsappNumber)) {
@@ -143,7 +146,7 @@ const NagrikSevaApplication = () => {
           aadhaarNumber: "",
           email: "",
           certificateHolderName: "",
-
+          certificateName:"",
           paymentScreenshot: null,
         });
 
@@ -408,6 +411,42 @@ const NagrikSevaApplication = () => {
                       </p>
                     )}
                   </div>
+
+
+<div>
+                    <label
+                      htmlFor="certificateName"
+                      className="block text-sm font-yatra-one font-bold text-gray-700 mb-2"
+                    >
+                      प्रमाणपत्राचे नाव{" "}
+                      <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="certificateName"
+                      name="certificateName"
+                      value={formData.certificateName}
+                      onChange={handleInputChange}
+                      className={`w-full px-3 py-2 border rounded-lg font-bakbak-one focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                        formErrors.certificateHolderName
+                          ? "border-red-500"
+                          : "border-gray-300"
+                      }`}
+                      placeholder="प्रमाणपत्राचे नाव"
+                    />
+                    {formErrors.certificateName && (
+                      <p className="text-red-500 text-xs mt-1 font-bakbak-one">
+                        {formErrors.certificateName}
+                      </p>
+                    )}
+                  </div>
+
+
+
+
+
+
+
                 </div>
 
                 {/* Payment Screenshot */}
