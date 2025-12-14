@@ -128,6 +128,17 @@ export default function AwardsPage() {
   return (
     <div className="min-h-screen bg-white py-4 sm:py-6 md:py-8 lg:py-12 px-2 sm:px-4 md:px-6 ">
       <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-8 xl:mb-10">
+            <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl font-bold text-blue-700 mb-2 sm:mb-3 md:mb-4 lg:mb-2 xl:mb-3 leading-tight font-yatra-one">
+              {t('governmentMembersTitle')}
+            </h2>
+            <div className="flex justify-center mb-2 sm:mb-3 md:mb-4 lg:mb-2 xl:mb-3">
+              <div className="w-20 xs:w-24 sm:w-28 md:w-32 lg:w-28 xl:w-32 h-px">
+                <div className="h-full bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+              </div>
+            </div>
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-lg font-semibold text-gray-800 font-bakbak-one"> </p>
+          </div>
         
         {/* Members Section */}
         <div className="mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-4 md:px-8 ">
@@ -202,10 +213,69 @@ export default function AwardsPage() {
                 <p className="text-lg font-yatra-one text-gray-600">{error || t('noAwardsAvailable')}</p>
               </div>
             ) : (
-              /* Keep all your existing awards display logic */
               <>
-                {/* Your existing awards mapping code stays exactly the same */}
-              </>
+  <div className="w-full py-4 overflow-hidden">
+
+    <div
+      className={`flex gap-6 w-max mx-auto   /* <-- CENTER DESKTOP */ 
+        ${awards.length > 1 ? "animate-mobile" : ""} 
+        ${awards.length > 4 ? "animate-desktop" : ""}
+      `}
+      style={{ justifyContent: "center" }}
+    >
+      {awards.map((award) => (
+        <li
+          key={award._id}
+          className="bg-white rounded-lg shadow-md hover:shadow-lg 
+                     transition-all duration-300 hover:-translate-y-1 
+                     overflow-hidden w-40 sm:w-44 md:w-48 list-none"
+        >
+          {/* Image */}
+          <div className="relative aspect-square overflow-hidden bg-gray-50">
+            <img
+              src={award.image}
+              alt={award.title}
+              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              onError={(e) => (e.target.style.display = 'none')}
+            />
+          </div>
+
+          {/* Title */}
+          <div className="p-3">
+            <h3 className="font-yatra-one font-bold text-center text-sm md:text-base text-gray-800">
+              {award.title}
+            </h3>
+          </div>
+        </li>
+      ))}
+    </div>
+  </div>
+
+  <style>{`
+    /* MOBILE (<768px) */
+    @media (max-width: 767px) {
+      .animate-mobile {
+        animation: mobileScroll 10s linear infinite;
+      }
+      @keyframes mobileScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-60%); }
+      }
+    }
+
+    /* DESKTOP (≥768px) */
+    @media (min-width: 768px) {
+      .animate-desktop {
+        animation: desktopScroll 12s linear infinite;
+      }
+      @keyframes desktopScroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+    }
+  `}</style>
+</>
+
             )}
           </div>
 

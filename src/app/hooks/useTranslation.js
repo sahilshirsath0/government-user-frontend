@@ -19,7 +19,7 @@ const translations = {
     division: 'नागरीक सेवा',
     services: 'विभाग',
     contact: 'संपर्क',
-
+    governmentMembersTitle:'अधिकारी आणि प्रतिनिधी',
     adminLogin: 'ग्रामपंचायत लॉगीन',
     menu: 'मेनू',
     governmentTitle: 'Government of Maharashtra | महाराष्ट्र शासन',
@@ -317,6 +317,7 @@ const translations = {
     services: 'Citizen Services', 
     contact: 'Contact',
     feedback: 'Feedback',
+    governmentMembersTitle:'Goverment Officer & Members',
      // Footer specific translations
     footerSlogan: 'Development of Our Village, In Our Hands!',
     footerDescription: 'A unified platform for services, information and useful resources. Our commitment to a clean, safe and progressive.',

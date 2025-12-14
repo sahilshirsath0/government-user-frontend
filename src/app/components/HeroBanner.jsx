@@ -7,20 +7,22 @@ export default function HeroBanner() {
     <>    <section className="relative h-[20vh] xs:h-[70vh] sm:h-[35vh] md:h-[40vh] lg:h-[60vh] xl:h-[70vh] flex items-center justify-center text-center overflow-hidden">
       {/* Background Video */}
       <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover object-center z-0"
-      >
-        <source src="https://res.cloudinary.com/dgdeluo6e/video/upload/v1761023807/Untitled_video_-_Made_with_Clipchamp_yokdti.mp4" type="video/mp4" />
-        {/* Fallback image if video doesn't load */}
-        <img
-          src="./"
-          alt="Aerial view of Gram Panchayat Yetgaon"
-          className="absolute inset-0 w-full h-full object-cover object-center z-0"
-        />
-      </video>
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="absolute inset-0 w-full h-full object-cover object-center z-0"
+>
+  <source src="/video/dronshoot1.mp4" type="video/mp4" />
+
+  {/* Fallback image if video doesn't load */}
+  <img
+    src="/fallback.jpg"   // optional fallback image in public folder
+    alt="Aerial view of Gram Panchayat Yetgaon"
+    className="absolute inset-0 w-full h-full object-cover object-center z-0"
+  />
+</video>
+
 
       {/* Overlay Content */}
       <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-2 xs:p-4 z-10">
