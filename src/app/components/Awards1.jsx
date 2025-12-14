@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { publicAPI } from '../services/service';
-import { useTranslation } from '../hooks/useTranslation';
+import React, { useState, useEffect } from "react";
+import { publicAPI } from "../services/service";
+import { useTranslation } from "../hooks/useTranslation";
 
 export default function AwardsPage() {
-  const { t, language } = useTranslation();
-  
+  const { t } = useTranslation();
+
   const [counters, setCounters] = useState({
     literacy: 0,
     waterSupply: 0,
     electricity: 0,
-    healthService: 0
+    healthService: 0,
   });
 
   const [isVisible, setIsVisible] = useState(false);
@@ -37,12 +37,12 @@ export default function AwardsPage() {
         setError(null);
       } else {
         setAwards([]);
-        setError(response.data.message || t('noAwardsAvailable'));
+        setError(response.data.message || t("noAwardsAvailable"));
       }
     } catch (err) {
-      console.error('Error fetching awards:', err);
+      console.error("Error fetching awards:", err);
       setAwards([]);
-      setError(t('noAwardsAvailable'));
+      setError(t("noAwardsAvailable"));
     } finally {
       setLoading(false);
     }
@@ -52,25 +52,25 @@ export default function AwardsPage() {
     setMembersLoading(true);
     try {
       const response = await publicAPI.getMembers();
-      console.log('Members response:', response);
-      
+      console.log("Members response:", response);
+
       if (response.data.success && response.data.data.length > 0) {
-           setMembers([...response.data.data].reverse());
+        setMembers([...response.data.data].reverse());
         setMembersError(null);
       } else {
         setMembers([]);
-        setMembersError(response.data.message || t('noMembersAvailable'));
+        setMembersError(response.data.message || t("noMembersAvailable"));
       }
     } catch (err) {
-      console.error('Error fetching members:', err);
+      console.error("Error fetching members:", err);
       setMembers([]);
-      setMembersError(t('noMembersAvailable'));
+      setMembersError(t("noMembersAvailable"));
     } finally {
       setMembersLoading(false);
     }
   };
 
-  // Keep all your existing useEffect logic for counters and animations...
+  // IntersectionObserver for counters
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -82,7 +82,7 @@ export default function AwardsPage() {
       { threshold: 0.3 }
     );
 
-    const element = document.getElementById('progress-stats');
+    const element = document.getElementById("progress-stats");
     if (element) {
       observer.observe(element);
     }
@@ -100,19 +100,19 @@ export default function AwardsPage() {
         literacy: 98,
         waterSupply: 100,
         electricity: 100,
-        healthService: 100
+        healthService: 100,
       };
 
       let currentStep = 0;
       const timer = setInterval(() => {
         currentStep++;
         const progress = currentStep / steps;
-        
+
         setCounters({
           literacy: Math.floor(targets.literacy * progress),
           waterSupply: Math.floor(targets.waterSupply * progress),
           electricity: Math.floor(targets.electricity * progress),
-          healthService: Math.floor(targets.healthService * progress)
+          healthService: Math.floor(targets.healthService * progress),
         });
 
         if (currentStep >= steps) {
@@ -126,156 +126,158 @@ export default function AwardsPage() {
   }, [isVisible]);
 
   return (
-    <div className="min-h-screen bg-white py-4 sm:py-6 md:py-8 lg:py-12 px-2 sm:px-4 md:px-6 ">
+    <div className="min-h-screen bg-white py-4 sm:py-6 md:py-8 lg:py-12 px-2 sm:px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
+        {/* Members title */}
         <div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-8 xl:mb-10">
-            <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl font-bold text-blue-700 mb-2 sm:mb-3 md:mb-4 lg:mb-2 xl:mb-3 leading-tight font-yatra-one">
-              {t('governmentMembersTitle')}
-            </h2>
-            <div className="flex justify-center mb-2 sm:mb-3 md:mb-4 lg:mb-2 xl:mb-3">
-              <div className="w-20 xs:w-24 sm:w-28 md:w-32 lg:w-28 xl:w-32 h-px">
-                <div className="h-full bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
-              </div>
+          <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl font-bold text-blue-700 mb-2 sm:mb-3 md:mb-4 lg:mb-2 xl:mb-3 leading-tight font-yatra-one">
+            {t("governmentMembersTitle")}
+          </h2>
+          <div className="flex justify-center mb-2 sm:mb-3 md:mb-4 lg:mb-2 xl:mb-3">
+            <div className="w-20 xs:w-24 sm:w-28 md:w-32 lg:w-28 xl:w-32 h-px">
+              <div className="h-full bg-gradient-to-r from-transparent via-yellow-500 to-transparent" />
             </div>
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-lg font-semibold text-gray-800 font-bakbak-one"> </p>
           </div>
-        
+        </div>
+
         {/* Members Section */}
-        <div className="mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-4 md:px-8 ">
-  {membersLoading ? (
-    <div className="flex justify-center items-center py-12">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      <span className="ml-4 text-gray-600 font-yatra-one">{t('membersLoading')}</span>
-    </div>
-  ) : membersError || members.length === 0 ? (
-    <div className="text-center py-12">
-      <div className="text-6xl mb-4">👥</div>
-      <p className="text-lg font-yatra-one text-gray-600">{membersError || t('noMembersAvailable')}</p>
-    </div>
-  ) : (
-    <>
-      <div className="flex flex-row flex-wrap justify-center gap-4 mb-4 sm:mb-6 lg:mb-0">
-  {members.slice(0, 4).map((member) => (
-    <li
-      key={member.id}
-      className="features-style2__single text-center mt-3 flex-shrink-0 bg-white rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105 w-37 sm:w-40 md:w-48 lg:w-48 xl:w-48"
-      style={{ listStyle: 'none' }}
-    >
-      <div className="features-style2__single-icon mx-auto mb-3">
-        <img
-          src={member.image}
-          alt={member.name}
-          loading="lazy"
-          width="115"
-          height="115"
-          className="mx-auto rounded-full border-4 border-gray-300 shadow-md object-cover"
-          onError={(e) => { e.target.src = '/default_image.png'; }}
-        />
-      </div>
-      <div className="features-style2__single-content text-black px-2">
-        <h3 className="text-lg font-semibold tracking-wide mb-1 hover:text-blue-600 transition-colors duration-300">
-          <a href="#">{member.name}</a>
-        </h3>
-        <p className="text-sm font-medium">{member.position}</p>
-      </div>
-    </li>
-  ))}
-</div>
-
-    </>
-  )}
-</div>
-
+        <div className="mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-4 md:px-8">
+          {membersLoading ? (
+            <div className="flex justify-center items-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600" />
+              <span className="ml-4 text-gray-600 font-yatra-one">
+                {t("membersLoading")}
+              </span>
+            </div>
+          ) : membersError || members.length === 0 ? (
+            <div className="text-center py-12">
+              <div className="text-6xl mb-4">👥</div>
+              <p className="text-lg font-yatra-one text-gray-600">
+                {membersError || t("noMembersAvailable")}
+              </p>
+            </div>
+          ) : (
+            <div className="flex flex-row flex-wrap justify-center gap-4 mb-4 sm:mb-6 lg:mb-0">
+              {members.slice(0, 4).map((member) => (
+                <li
+                  key={member.id}
+                  className="features-style2__single text-center mt-3 flex-shrink-0 bg-white rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105 w-37 sm:w-40 md:w-48 lg:w-48 xl:w-48"
+                  style={{ listStyle: "none" }}
+                >
+                  <div className="features-style2__single-icon mx-auto mb-3">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      loading="lazy"
+                      width="115"
+                      height="115"
+                      className="mx-auto rounded-full border-4 border-gray-300 shadow-md object-cover"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = "/default_image.png";
+                      }}
+                    />
+                  </div>
+                  <div className="features-style2__single-content text-black px-2">
+                    <h3 className="text-lg font-semibold tracking-wide mb-1 hover:text-blue-600 transition-colors duration-300">
+                      <a href="#">{member.name}</a>
+                    </h3>
+                    <p className="text-sm font-medium">{member.position}</p>
+                  </div>
+                </li>
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Awards Section */}
         <div className="mt-4 sm:mt-6 md:mt-8 lg:mt-20">
           <div className="text-center mb-4 sm:mb-6 md:mb-8 lg:mb-8 xl:mb-10">
             <h2 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-xl xl:text-2xl font-bold text-blue-700 mb-2 sm:mb-3 md:mb-4 lg:mb-2 xl:mb-3 leading-tight font-yatra-one">
-              {t('awardsTitle')}
+              {t("awardsTitle")}
             </h2>
+
             <div className="flex justify-center mb-2 sm:mb-3 md:mb-4 lg:mb-2 xl:mb-3">
               <div className="w-20 xs:w-24 sm:w-28 md:w-32 lg:w-28 xl:w-32 h-px">
-                <div className="h-full bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+                <div className="h-full bg-gradient-to-r from-transparent via-yellow-500 to-transparent" />
               </div>
             </div>
-            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-lg font-semibold text-gray-800 font-bakbak-one">{t('panchayatName')}</p>
+
+            <p className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-lg font-semibold text-gray-800 font-bakbak-one">
+              {t("panchayatName")}
+            </p>
           </div>
 
           {/* Awards Display */}
           <div className="px-4 md:px-8">
             {loading ? (
               <div className="flex justify-center items-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600" />
               </div>
             ) : error || awards.length === 0 ? (
               <div className="text-center py-12">
                 <div className="text-6xl mb-4">🏆</div>
-                <p className="text-lg font-yatra-one text-gray-600">{error || t('noAwardsAvailable')}</p>
+                <p className="text-lg font-yatra-one text-gray-600">
+                  {error || t("noAwardsAvailable")}
+                </p>
               </div>
             ) : (
               <>
-  <div className="w-full py-4 overflow-hidden">
+                <div className="w-full py-4 overflow-hidden">
+                  <ul
+                    className={`flex gap-6 w-max mx-auto ${
+                      awards.length > 1 ? "animate-mobile" : ""
+                    } ${awards.length > 4 ? "animate-desktop" : ""}`}
+                    style={{ justifyContent: "center" }}
+                  >
+                    {awards.map((award, index) => (
+                      <li
+                        key={award._id || award.id || index}
+                        className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden w-40 sm:w-44 md:w-48 list-none"
+                      >
+                        <div className="relative aspect-square overflow-hidden bg-gray-50">
+                          <img
+                            src={award.image}
+                            alt={award.title}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                              e.currentTarget.style.display = "none";
+                            }}
+                          />
+                        </div>
+                        <div className="p-3">
+                          <h3 className="font-yatra-one font-bold text-center text-sm md:text-base text-gray-800">
+                            {award.title}
+                          </h3>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-    <div
-      className={`flex gap-6 w-max mx-auto   /* <-- CENTER DESKTOP */ 
-        ${awards.length > 1 ? "animate-mobile" : ""} 
-        ${awards.length > 4 ? "animate-desktop" : ""}
-      `}
-      style={{ justifyContent: "center" }}
-    >
-      {awards.map((award) => (
-        <li
-          key={award._id}
-          className="bg-white rounded-lg shadow-md hover:shadow-lg 
-                     transition-all duration-300 hover:-translate-y-1 
-                     overflow-hidden w-40 sm:w-44 md:w-48 list-none"
-        >
-          {/* Image */}
-          <div className="relative aspect-square overflow-hidden bg-gray-50">
-            <img
-              src={award.image}
-              alt={award.title}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              onError={(e) => (e.target.style.display = 'none')}
-            />
-          </div>
+                {/* Local animation styles */}
+                <style>{`
+                  @media (max-width: 767px) {
+                    .animate-mobile {
+                      animation: mobileScroll 10s linear infinite;
+                    }
+                    @keyframes mobileScroll {
+                      0% { transform: translateX(0); }
+                      100% { transform: translateX(-60%); }
+                    }
+                  }
 
-          {/* Title */}
-          <div className="p-3">
-            <h3 className="font-yatra-one font-bold text-center text-sm md:text-base text-gray-800">
-              {award.title}
-            </h3>
-          </div>
-        </li>
-      ))}
-    </div>
-  </div>
-
-  <style>{`
-    /* MOBILE (<768px) */
-    @media (max-width: 767px) {
-      .animate-mobile {
-        animation: mobileScroll 10s linear infinite;
-      }
-      @keyframes mobileScroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-60%); }
-      }
-    }
-
-    /* DESKTOP (≥768px) */
-    @media (min-width: 768px) {
-      .animate-desktop {
-        animation: desktopScroll 12s linear infinite;
-      }
-      @keyframes desktopScroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-    }
-  `}</style>
-</>
-
+                  @media (min-width: 768px) {
+                    .animate-desktop {
+                      animation: desktopScroll 12s linear infinite;
+                    }
+                    @keyframes desktopScroll {
+                      0% { transform: translateX(0); }
+                      100% { transform: translateX(-50%); }
+                    }
+                  }
+                `}</style>
+              </>
             )}
           </div>
 
@@ -283,17 +285,17 @@ export default function AwardsPage() {
           <div className="mt-6 sm:mt-8 md:mt-12 lg:mt-16 px-4 md:px-8">
             <div className="bg-gradient-to-br from-green-50 via-blue-50 to-yellow-50 rounded-xl p-4 sm:p-6 md:p-8 lg:p-6 xl:p-8 mb-6 sm:mb-8 md:mb-12">
               <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl font-bold text-center text-gray-800 mb-4 sm:mb-6 md:mb-8 font-yatra-one">
-                {t('governmentServices')}
+                {t("governmentServices")}
               </h3>
               <div id="housing-pension">
                 <div className="text-center mb-8">
                   <div className="flex items-center justify-center gap-1 mt-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span>
-                    <span className="w-14 h-[2px] bg-sky-200 rounded-full"></span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse [animation-delay:200ms]"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
+                    <span className="w-14 h-[2px] bg-sky-200 rounded-full" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse [animation-delay:200ms]" />
                   </div>
                   <p className="max-w-3xl mx-auto mt-3 text-slate-600 font-bakbak-one text-sm sm:text-base">
-                    {t('servicesDescription')}
+                    {t("servicesDescription")}
                   </p>
                 </div>
 
@@ -305,8 +307,8 @@ export default function AwardsPage() {
                     rel="noopener noreferrer"
                     className="relative rounded-xl bg-white border p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 border-slate-200 hover:border-sky-300"
                   >
-                    <div className="  flex items-start gap-3 sm:gap-4">
-                      <span className="inline-flex items-center justify-center w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-slate-50 text-slate-800 ring-1 ring-slate-200 group-hover:bg-sky-50 group-hover:text-sky-700">
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <span className="inline-flex items-center justify-center w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-slate-50 text-slate-800 ring-1 ring-slate-200">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
@@ -317,19 +319,19 @@ export default function AwardsPage() {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          className=" lucide lucide-house w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                          className="lucide lucide-house w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
                           aria-hidden="true"
                         >
-                          <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
-                          <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                          <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                          <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                         </svg>
                       </span>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-yatra-one text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-slate-900 leading-tight">
-                          {t('pmAwasYojana')}
+                          {t("pmAwasYojana")}
                         </h3>
                         <p className="mt-1 sm:mt-2 text-slate-600 text-xs xs:text-xs sm:text-sm leading-relaxed font-bakbak-one">
-                          {t('pmAwasDescription')}
+                          {t("pmAwasDescription")}
                         </p>
                       </div>
                     </div>
@@ -343,7 +345,7 @@ export default function AwardsPage() {
                     className="relative rounded-xl bg-white border p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 border-slate-200 hover:border-sky-300"
                   >
                     <div className="flex items-start gap-3 sm:gap-4">
-                      <span className="inline-flex items-center justify-center w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-slate-50 text-slate-800 ring-1 ring-slate-200 group-hover:bg-sky-50 group-hover:text-sky-700">
+                      <span className="inline-flex items-center justify-center w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-slate-50 text-slate-800 ring-1 ring-slate-200">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
@@ -357,16 +359,16 @@ export default function AwardsPage() {
                           className="lucide lucide-heart-pulse w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
                           aria-hidden="true"
                         >
-                          <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"></path>
-                          <path d="M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"></path>
+                          <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+                          <path d="M3.22 13H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27" />
                         </svg>
                       </span>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-yatra-one text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-slate-900 leading-tight">
-                          {t('atalPensionScheme')}
+                          {t("atalPensionScheme")}
                         </h3>
                         <p className="mt-1 sm:mt-2 text-slate-600 text-xs xs:text-xs sm:text-sm leading-relaxed font-bakbak-one">
-                          {t('atalPensionDescription')}
+                          {t("atalPensionDescription")}
                         </p>
                       </div>
                     </div>
@@ -380,7 +382,7 @@ export default function AwardsPage() {
                     className="relative rounded-xl bg-white border p-3 sm:p-4 md:p-5 lg:p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 border-slate-200 hover:border-sky-300"
                   >
                     <div className="flex items-start gap-3 sm:gap-4">
-                      <span className="inline-flex items-center justify-center w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-slate-50 text-slate-800 ring-1 ring-slate-200 group-hover:bg-sky-50 group-hover:text-sky-700">
+                      <span className="inline-flex items-center justify-center w-6 h-6 xs:w-8 xs:h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg bg-slate-50 text-slate-800 ring-1 ring-slate-200">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="24"
@@ -394,19 +396,19 @@ export default function AwardsPage() {
                           className="lucide lucide-indian-rupee w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
                           aria-hidden="true"
                         >
-                          <path d="M6 3h12"></path>
-                          <path d="M6 8h12"></path>
-                          <path d="m6 13 8.5 8"></path>
-                          <path d="M6 13h3"></path>
-                          <path d="M9 13c6.667 0 6.667-10 0-10"></path>
+                          <path d="M6 3h12" />
+                          <path d="M6 8h12" />
+                          <path d="m6 13 8.5 8" />
+                          <path d="M6 13h3" />
+                          <path d="M9 13c6.667 0 6.667-10 0-10" />
                         </svg>
                       </span>
                       <div className="flex-1 min-w-0">
                         <h3 className="font-yatra-one text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-bold text-slate-900 leading-tight">
-                          {t('nationalPensionScheme')}
+                          {t("nationalPensionScheme")}
                         </h3>
                         <p className="mt-1 sm:mt-2 text-slate-600 text-xs xs:text-xs sm:text-sm leading-relaxed font-bakbak-one">
-                          {t('nationalPensionDescription')}
+                          {t("nationalPensionDescription")}
                         </p>
                       </div>
                     </div>
