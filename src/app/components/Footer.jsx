@@ -120,7 +120,7 @@ export default function Footer() {
             <div className="flex items-center justify-center gap-2 mt-3">
               <span className="text-white text-xs font-bakbak-one">{t('designedBy')}</span>
               <div className="flex items-center gap-2">
-                <span className="text-[#ffcc00] text-xs font-bold font-bakbak-one">PRASHANT KHEDKAR</span>
+                <span className="text-[#ffcc00] text-xs font-bold font-bakbak-one">PRASHANT  KHEDKAR</span>
               </div>
             </div>
           </div>
