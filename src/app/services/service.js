@@ -222,7 +222,7 @@ export const publicAPI = {
     try {
       console.log("Fetching awards from public API..."); // Debug log
 
-      const response = await api.get("/awards/public"); // Try public first
+      const response = await api.get("/awards"); // Try public first
 
       console.log("Raw API response:", response.data); // Debug log
 
@@ -304,7 +304,7 @@ export const publicAPI = {
     try {
       console.log("Fetching members from public API..."); // Debug log
 
-      const response = await api.get("/members/public"); // Try public first
+      const response = await api.get("/members"); // Try public first
 
       console.log("Raw members API response:", response.data); // Debug log
 
@@ -386,7 +386,7 @@ export const publicAPI = {
     try {
       console.log("Fetching announcements from public API..."); // Debug log
 
-      const response = await api.get("/announcements/public"); // Try public first
+      const response = await api.get("/announcements"); // Try public first
 
       console.log("Raw announcements API response:", response.data); // Debug log
 
