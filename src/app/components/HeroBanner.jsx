@@ -200,16 +200,16 @@ export default function HeroBanner() {
           <li className="features-style2__single text-center flex-shrink-0 bg-white rounded-lg shadow-lg transform transition-transform duration-500 hover:scale-105 w-40 sm:w-40 md:w-48 lg:w-48 xl:w-48">
             <div className="features-style2__single-icon mx-auto mb-3">
               <img
-                src="https://admin.gpmiraj.com/img/mr-ajit-pawar.webp"
+                src="https://pbs.twimg.com/media/G__e0kDa8AAZEr9.jpg"
                 width="115"
                 loading="lazy"
-                alt="श्री अजित पवार"
+                alt="श्रीमती सुनेत्रा पवार"
                 className="mx-auto rounded-full border-4 border-gray-300 shadow-md"
               />
             </div>
             <div className="features-style2__single-content text-black">
               <h3 className="text-lg font-semibold tracking-wide mb-1 hover:text-blue-600 transition-colors duration-300">
-                <a href="#">श्री अजित पवार</a>
+                <a href="#">श्रीमती सुनेत्रा पवार</a>
               </h3>
               <p className="text-sm font-medium">मा.उपमुख्यमंत्री</p>
             </div>
